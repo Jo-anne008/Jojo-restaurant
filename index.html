@@ -54,7 +54,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <div class="blogo">
-                   <img src="img/my-logo.png" alt="my-logo" width="250">
+                   <img src="img/my-logo.png" alt="my-logo" width="100">
 
                     
                     </div>
@@ -771,7 +771,7 @@
                         <i class="fas fa-truck-fast fa-2x mb-3" style="color:rgba(255,255,255,.8);"></i>
                         <h4>Order Online</h4>
                         <p>Get hot food delivered in 25 minutes</p>
-                        <a href=https://wa.me/2348169021653?text=Hello%20I%Need%20to%20make%20an%20order" class="btnw"target=_blank>Order Now</a>
+                        <a href="https://wa.me/2348169021653?text=Hello%20I%Need%20to%20make%20an%20order" class="btnw"target=_blank>Order Now</a>
 
                     </div>
                 </div>
@@ -1056,9 +1056,9 @@
                 <div class="col-lg-8" data-aos="fade-left">
                     <div class="fcard">
                         <div class="row g-3">
-                            <div class="col-sm-6"><label class="flbl">Your Name *</label><input type="text" class="fctrl" placeholder="John Doe" /></div>
-                            <div class="col-sm-6"><label class="flbl">Email Address *</label><input type="email" class="fctrl" placeholder="you@email.com" /></div>
-                            <div class="col-sm-6"><label class="flbl">Phone Number</label><input type="tel" class="fctrl" placeholder="+1 (800) 000-0000" /></div>
+                            <div class="col-sm-6"><label class="flbl">Your Name *</label><input id="name" type="text" class="fctrl" placeholder="John Doe" /></div>
+                            <div class="col-sm-6"><label class="flbl">Email Address *</label><input id="email" type="email" class="fctrl" placeholder="you@email.com" /></div>
+                            <div class="col-sm-6"><label class="flbl">Phone Number</label><input id="phone-number" type="tel" class="fctrl" placeholder="+1 (800) 000-0000" /></div>
                             <div class="col-sm-6">
                                 <label class="flbl">Subject *</label>
                                 <select class="fctrl">
@@ -1069,8 +1069,12 @@
                               <option>Media &amp; Press</option>
                            </select>
                             </div>
-                            <div class="col-12"><label class="flbl">Message *</label><textarea class="fctrl" rows="5" placeholder="Write your message here..."></textarea></div>
-                            <div class="col-12"><button class="btn-red" id="ctcBtn"><i class="fas fa-paper-plane"></i>Send Message</button></div>
+                            <div class="col-12"><label class="flbl">Message *</label><textarea id="message" class="fctrl" rows="5" placeholder="Write your message here..."></textarea></div>
+                            <div class="col-12"><button type="submit"
+                             id="submit"
+                            class="btn-red">
+                        <i class="fa fa-paper-plane"></i>
+                    Send Message</button></div> 
                         </div>
                         <div class="sucmsg" id="ctcOk">
                             <i class="fas fa-check-circle"></i>
@@ -1167,6 +1171,29 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <!-- Main js -->
     <script src="js/main.js"></script>
+    <script>
+        let submitBtn = document.getElementById("submit");
+        
+        submitBtn.addEventListener("click", function(e){
+            e.preventDefault()
+
+            let name = document.getElementById("name").value;
+        let phoneNumber = document.getElementById("phone-number").value;
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message").value;
+
+        const myNumber = "08169021653";
+
+        let customMessage = `
+        Hello my name is ${name}
+        Phone number: ${phoneNumber}
+        Message: ${message}
+        `
+            const url = `https://wa.me/${myNumber}?text=${customMessage}`
+
+            window.open(url, "_blank")
+        })
+    </script>
 </body>
 
 </html>
